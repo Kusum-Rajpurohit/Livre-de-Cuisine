@@ -1,0 +1,38 @@
+decoration: InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon( Icons.mail),),
+                          hintText: "Email"),
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.done,
+                      inputFormatters:[FilteringTextInputFormatter.allow(RegExp("[0-9a-zA-Z@. ]")),],
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your gmail';
+                        }else if (!value.endsWith('@gmail.com')) {
+                          return 'please enter valid gmail';
+                        }
+                        return null;
+                      },
+
+
+TextFormField(
+                      decoration: InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon( Icons.supervised_user_circle),),
+                          hintText: "Username"),
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.next,
+                      inputFormatters:[FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),],
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter username';
+                        } else if (value.length < 4) {
+                          return 'At least enter 4 characters';
+                        } else if (value.length > 26) {
+                          return 'Maximum character is 26';
+                        }
+                        return null;
+                      },
+                    ),
